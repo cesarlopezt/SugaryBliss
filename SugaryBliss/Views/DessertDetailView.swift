@@ -8,14 +8,42 @@
 import SwiftUI
 
 struct DessertDetailView: View {
+    @Environment(\.dismiss) var dismiss
     var mealId: String
     @State private var mealDetail: MealDetail? = nil
+    @State private var isError = false
+    
     
     var body: some View {
-        Text(mealDetail?.strMeal ?? "Gii")
-            .task {
-                mealDetail = await fetchDessert()
+        Group {
+            if let mealDetail {
+                Form {
+                    Section("Ingredients") {
+                        IngredientsGrid(mealDetail: mealDetail)
+                    }
+                    Section("Instructions") {
+                        Text(mealDetail.strInstructions ?? "")
+                    }
+                }
+                .navigationTitle(mealDetail.strMeal)
+                .navigationBarTitleDisplayMode(.inline)
+            } else {
+                VStack{}
+                    .navigationTitle("Unable to load")
+                    .navigationBarTitleDisplayMode(.inline)
             }
+        }
+        .task {
+            mealDetail = await fetchDessert()
+            isError = mealDetail == nil
+        }
+        .alert("Unable to load dessert", isPresented: $isError) {
+            Button("OK") {
+                dismiss()
+            }
+        } message: {
+            Text("There was a problem loading the details of this dessert.")
+        }
     }
     
     func fetchDessert() async -> MealDetail? {
@@ -38,6 +66,8 @@ struct DessertDetailView: View {
 
 struct DessertDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        DessertDetailView(mealId: "52862")
+        NavigationView {
+            DessertDetailView(mealId: "52862")
+        }
     }
 }

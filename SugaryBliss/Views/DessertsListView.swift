@@ -9,6 +9,7 @@ import SwiftUI
 
 struct DessertsListView: View {
     @State var desserts: [Meal] = []
+    private let imageWidth = 110.0
     
     var body: some View {
         NavigationView {
@@ -17,9 +18,29 @@ struct DessertsListView: View {
                     NavigationLink {
                         DessertDetailView(mealId: dessert.idMeal)
                     } label: {
-                        Text(dessert.strMeal)
+                        HStack {
+                            CacheAsyncImage(url: URL(string: dessert.strMealThumb)!) { phase in
+                                switch phase {
+                                case .success(let image):
+                                    image
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: imageWidth)
+                                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                                case .failure(let error):
+                                    let _ = print(error)
+                                    Text("Error")
+                                        .frame(width: imageWidth, height: imageWidth)
+                                case .empty:
+                                    ProgressView()
+                                        .frame(width: imageWidth, height: imageWidth)
+                                @unknown default:
+                                    Image(systemName: "questionmark")
+                                }
+                            }
+                            Text(dessert.strMeal)
+                        }
                     }
-
                 }
             }
             .task {
