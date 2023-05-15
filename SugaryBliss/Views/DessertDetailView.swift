@@ -9,7 +9,6 @@ import SwiftUI
 
 struct DessertDetailView: View {
     var meal: Meal
-    var loader = MealLoader()
     @State private var result: Result<MealDetail, Error>?
     
     var body: some View {
@@ -36,7 +35,7 @@ struct DessertDetailView: View {
             case nil:
                 ProgressView()
                     .task {
-                        await loader.loadDessert(with: meal.idMeal) {
+                        await MealLoader.shared.loadDessert(with: meal.idMeal) {
                             result = $0
                         }
                     }

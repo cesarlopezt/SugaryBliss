@@ -9,7 +9,6 @@ import SwiftUI
 
 struct DessertsListView: View {
     @State private var result: Result<[Meal], Error>?
-    var loader = MealLoader()
 
     var body: some View {
         NavigationView {
@@ -31,7 +30,7 @@ struct DessertsListView: View {
             case nil:
                 ProgressView()
                     .task {
-                        await loader.loadDesserts {
+                        await MealLoader.shared.loadDesserts {
                             result = $0
                         }
                     }

@@ -13,6 +13,8 @@ class MealLoader {
         case mealNotFound
     }
     
+    static let shared = MealLoader()
+    
     private let urlSession = URLSession.shared
     let baseURL = "https://themealdb.com/api/json/v1/1/"
     
