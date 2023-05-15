@@ -7,52 +7,39 @@
 
 import SwiftUI
 
-struct Ingredient: Identifiable {
-    var id = UUID()
-    var name: String
-    var measurement: String
-}
-
 struct IngredientsGrid: View {
     let ingredientColumns = [GridItem(.flexible()), GridItem(.flexible())]
-    var ingredients: [Ingredient]
+    var mealDetail: MealDetail
     
-    init(mealDetail: MealDetail) {
-        // Access to properties dinamically to build list of ingredients
-        let mirrorMealDetail = Mirror(reflecting: mealDetail)
-
-        self.ingredients = []
-        for i in 1...20 {
-            let ingredientLabel = "strIngredient\(i)"
-            let measureLabel = "strMeasure\(i)"
-
-            let ingredientName = mirrorMealDetail.children.first(where: { $0.label == ingredientLabel })?.value as? String
-            guard let ingredientName, !ingredientName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
-                continue
-            }
-            let measure = mirrorMealDetail.children.first(where: { $0.label == measureLabel })?.value as? String
-            guard let measure, !measure.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
-                continue
-            }
-
-            self.ingredients.append(.init(name: ingredientName, measurement: measure))
-        }
-        
-    }
-
     var body: some View {
-        LazyVGrid(columns: ingredientColumns, alignment: .leading, spacing: 10) {
-            ForEach(ingredients) { ingredient in
+        LazyVGrid(columns: ingredientColumns, alignment: .leading, spacing: 5) {
+            Group {
+                Text("Ingredient").bold()
+                Text("Measure").bold()
+            }
+            .opacity(0.4)
+            ForEach(mealDetail.ingredients) { ingredient in
                 Text(ingredient.name)
-                Text(ingredient.measurement)
+                Text(ingredient.measure)
             }
         }
-        .padding(.vertical, 10)
+        .padding(.vertical, 5)
     }
 }
 
 struct IngredientsGrid_Previews: PreviewProvider {
     static var previews: some View {
-        IngredientsGrid(mealDetail: MealDetail(idMeal: "12", strMeal: "Battenberg Cake", strMealThumb: ""))
+        IngredientsGrid(
+            mealDetail: MealDetail(
+                idMeal: "12",
+                strMeal: "Battenberg Cake",
+                strMealThumb: "",
+                ingredients: [
+                    .init(name: "Plain Flour", measure: "120g"),
+                    .init(name: "Cinnamon", measure: "1/4 teaspoon"),
+                    .init(name: "Ice Cream", measure: "1 scoop")
+                ]
+        )
+    )
     }
 }

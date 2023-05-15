@@ -44,7 +44,11 @@ struct DessertDetailView: View {
 struct DessertDetailView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            DessertDetailView(meal: .init(strMeal: "Peach & Blueberry Grunt", strMealThumb: "https://www.themealdb.com/images/media/meals/ssxvup1511387476.jpg", idMeal: "52862"))
+            DessertDetailView(meal: .init(
+                strMeal: "Peach & Blueberry Grunt",
+                strMealThumb: "https://www.themealdb.com/images/media/meals/ssxvup1511387476.jpg",
+                idMeal: "52862")
+            )
         }
     }
 }
