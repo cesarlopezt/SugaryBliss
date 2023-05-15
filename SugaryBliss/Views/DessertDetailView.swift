@@ -8,15 +8,14 @@
 import SwiftUI
 
 struct DessertDetailView: View {
-    @Environment(\.dismiss) var dismiss
-    var mealId: String
-    @State private var mealDetail: MealDetail? = nil
-    @State private var isError = false
-    
+    var meal: Meal
+    var loader = MealLoader()
+    @State private var result: Result<MealDetail, Error>?
     
     var body: some View {
         Group {
-            if let mealDetail {
+            switch result {
+            case .success(let mealDetail):
                 Form {
                     Section("Ingredients") {
                         IngredientsGrid(mealDetail: mealDetail)
@@ -25,49 +24,27 @@ struct DessertDetailView: View {
                         Text(mealDetail.strInstructions ?? "")
                     }
                 }
-                .navigationTitle(mealDetail.strMeal)
-                .navigationBarTitleDisplayMode(.inline)
-            } else {
-                VStack{}
-                    .navigationTitle("Unable to load")
-                    .navigationBarTitleDisplayMode(.inline)
+            case .failure(let error):
+                let _ = print(error)
+                Text("Error")
+            case nil:
+                ProgressView()
+                    .task {
+                        await loader.loadDessert(with: meal.idMeal) {
+                            result = $0
+                        }
+                    }
             }
         }
-        .task {
-            mealDetail = await fetchDessert()
-            isError = mealDetail == nil
-        }
-        .alert("Unable to load dessert", isPresented: $isError) {
-            Button("OK") {
-                dismiss()
-            }
-        } message: {
-            Text("There was a problem loading the details of this dessert.")
-        }
-    }
-    
-    func fetchDessert() async -> MealDetail? {
-        let url = URL(string: "https://themealdb.com/api/json/v1/1/lookup.php?i=\(mealId)")!
-        var request = URLRequest(url: url)
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpMethod = "GET"
-        
-        do {
-            let (data, _) = try await URLSession.shared.data(for: request)
-            let decodedMeals = try JSONDecoder().decode(MealsDetailResponse.self, from: data)
-            return decodedMeals.meals?.first
-            
-        } catch {
-            print("ERROR", error)
-            return nil
-        }
+        .navigationTitle(meal.strMeal)
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
 struct DessertDetailView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            DessertDetailView(mealId: "52862")
+            DessertDetailView(meal: .init(strMeal: "Peach & Blueberry Grunt", strMealThumb: "https://www.themealdb.com/images/media/meals/ssxvup1511387476.jpg", idMeal: "52862"))
         }
     }
 }

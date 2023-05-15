@@ -15,12 +15,9 @@ struct Ingredient: Identifiable {
 
 struct IngredientsGrid: View {
     let ingredientColumns = [GridItem(.flexible()), GridItem(.flexible())]
-    var mealDetail: MealDetail
     var ingredients: [Ingredient]
     
     init(mealDetail: MealDetail) {
-        self.mealDetail = mealDetail
-        
         // Access to properties dinamically to build list of ingredients
         let mirrorMealDetail = Mirror(reflecting: mealDetail)
 

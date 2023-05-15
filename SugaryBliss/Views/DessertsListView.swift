@@ -8,62 +8,64 @@
 import SwiftUI
 
 struct DessertsListView: View {
-    @State var desserts: [Meal] = []
-    private let imageWidth = 110.0
-    
+    @State private var result: Result<[Meal], Error>?
+    var loader = MealLoader()
+
     var body: some View {
         NavigationView {
-            List {
-                ForEach(desserts, id: \.idMeal) { dessert in
-                    NavigationLink {
-                        DessertDetailView(mealId: dessert.idMeal)
-                    } label: {
-                        HStack {
-                            CacheAsyncImage(url: URL(string: dessert.strMealThumb)!) { phase in
-                                switch phase {
-                                case .success(let image):
-                                    image
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .frame(width: imageWidth)
-                                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                                case .failure(let error):
-                                    let _ = print(error)
-                                    Text("Error")
-                                        .frame(width: imageWidth, height: imageWidth)
-                                case .empty:
-                                    ProgressView()
-                                        .frame(width: imageWidth, height: imageWidth)
-                                @unknown default:
-                                    Image(systemName: "questionmark")
-                                }
-                            }
-                            Text(dessert.strMeal)
+            switch result {
+            case .success(let desserts):
+                List {
+                    ForEach(desserts, id: \.idMeal) { dessert in
+                        NavigationLink {
+                            DessertDetailView(meal: dessert)
+                        } label: {
+                            DessertCell(dessert: dessert)
                         }
                     }
                 }
+                .navigationTitle("Desserts")
+            case .failure(let error):
+                let _ = print(error)
+                Text("Error")
+            case nil:
+                ProgressView()
+                    .task {
+                        await loader.loadDesserts {
+                            result = $0
+                        }
+                    }
             }
-            .task {
-                desserts = await fetchDesserts() ?? []
-            }
-            .navigationTitle("Desserts")
         }
     }
-    
-    func fetchDesserts() async -> [Meal]? {
-        let url = URL(string: "https://themealdb.com/api/json/v1/1/filter.php?c=Dessert")!
-        var request = URLRequest(url: url)
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpMethod = "GET"
-        
-        do {
-            let (data, _) = try await URLSession.shared.data(for: request)
+}
 
-            let decodedMeals = try JSONDecoder().decode(MealsListResponse.self, from: data)
-            return decodedMeals.meals
-            
-        } catch {
-            return nil
+struct DessertCell: View {
+    var dessert: Meal
+    private let imageWidth = 110.0
+
+    var body: some View {
+        HStack {
+            CacheAsyncImage(url: URL(string: dessert.strMealThumb)!) { phase in
+                switch phase {
+                case .success(let image):
+                    image
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: imageWidth)
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                case .failure(let error):
+                    let _ = print(error)
+                    Text("Error")
+                        .frame(width: imageWidth, height: imageWidth)
+                case .empty:
+                    ProgressView()
+                        .frame(width: imageWidth, height: imageWidth)
+                @unknown default:
+                    Image(systemName: "questionmark")
+                }
+            }
+            Text(dessert.strMeal)
         }
     }
 }

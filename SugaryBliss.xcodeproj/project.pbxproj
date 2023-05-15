@@ -17,6 +17,7 @@
 		DB889E3B2A0F00AD00D6E898 /* DessertDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB889E3A2A0F00AD00D6E898 /* DessertDetailView.swift */; };
 		DB889E3D2A113A6F00D6E898 /* CacheAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB889E3C2A113A6F00D6E898 /* CacheAsyncImage.swift */; };
 		DB889E3F2A1144E600D6E898 /* IngredientsGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB889E3E2A1144E600D6E898 /* IngredientsGrid.swift */; };
+		DB889E412A11B3AA00D6E898 /* MealLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB889E402A11B3AA00D6E898 /* MealLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		DB889E3A2A0F00AD00D6E898 /* DessertDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertDetailView.swift; sourceTree = "<group>"; };
 		DB889E3C2A113A6F00D6E898 /* CacheAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheAsyncImage.swift; sourceTree = "<group>"; };
 		DB889E3E2A1144E600D6E898 /* IngredientsGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsGrid.swift; sourceTree = "<group>"; };
+		DB889E402A11B3AA00D6E898 /* MealLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				DB889E362A0EFDB700D6E898 /* Responses.swift */,
+				DB889E402A11B3AA00D6E898 /* MealLoader.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -193,6 +196,7 @@
 				DB4AE46D2A0DCD9E0003A514 /* Meal.swift in Sources */,
 				DB889E3F2A1144E600D6E898 /* IngredientsGrid.swift in Sources */,
 				DB889E3B2A0F00AD00D6E898 /* DessertDetailView.swift in Sources */,
+				DB889E412A11B3AA00D6E898 /* MealLoader.swift in Sources */,
 				DB889E392A0EFDEE00D6E898 /* MealDetail.swift in Sources */,
 				DB4AE46B2A0DCC840003A514 /* DessertsListView.swift in Sources */,
 				DB889E3D2A113A6F00D6E898 /* CacheAsyncImage.swift in Sources */,
