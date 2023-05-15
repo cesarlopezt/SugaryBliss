@@ -17,6 +17,12 @@ struct DessertDetailView: View {
             switch result {
             case .success(let mealDetail):
                 Form {
+                    if let videoId = mealDetail.strYoutube {         
+                        Section ("Video") {
+                            VideoView(videoId: videoId)
+                                .frame(height: 200)
+                        }
+                    }
                     Section("Ingredients") {
                         IngredientsGrid(mealDetail: mealDetail)
                     }

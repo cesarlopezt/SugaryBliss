@@ -14,10 +14,11 @@ class MealLoader {
     }
     
     private let urlSession = URLSession.shared
+    let baseURL = "https://themealdb.com/api/json/v1/1/"
     
     func loadDesserts(completionHandler: @escaping (Result<[Meal], Error>) -> Void) async {
         do {
-            guard let url = URL(string: "https://themealdb.com/api/json/v1/1/filter.php?c=Dessert") else {
+            guard let url = URL(string: "\(baseURL)filter.php?c=Dessert") else {
                 throw MealLoaderError.invalidURL
             }
             var request = URLRequest(url: url)
@@ -34,7 +35,7 @@ class MealLoader {
     
     func loadDessert(with id: String, completionHandler: @escaping (Result<MealDetail, Error>) -> Void) async {
         do {
-            guard let url = URL(string: "https://themealdb.com/api/json/v1/1/lookup.php?i=\(id)") else {
+            guard let url = URL(string: "\(baseURL)lookup.php?i=\(id)") else {
                 throw MealLoaderError.invalidURL
             }
             var request = URLRequest(url: url)

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DB0EDB592A128F9F00E607F2 /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0EDB582A128F9F00E607F2 /* VideoView.swift */; };
 		DB4AE4572A0DC7B10003A514 /* SugaryBlissApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4AE4562A0DC7B10003A514 /* SugaryBlissApp.swift */; };
 		DB4AE45B2A0DC7B20003A514 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB4AE45A2A0DC7B20003A514 /* Assets.xcassets */; };
 		DB4AE45F2A0DC7B20003A514 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB4AE45E2A0DC7B20003A514 /* Preview Assets.xcassets */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DB0EDB582A128F9F00E607F2 /* VideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
 		DB4AE4532A0DC7B10003A514 /* SugaryBliss.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SugaryBliss.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB4AE4562A0DC7B10003A514 /* SugaryBlissApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SugaryBlissApp.swift; sourceTree = "<group>"; };
 		DB4AE45A2A0DC7B20003A514 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 				DB889E3A2A0F00AD00D6E898 /* DessertDetailView.swift */,
 				DB889E3E2A1144E600D6E898 /* IngredientsGrid.swift */,
 				DB889E3C2A113A6F00D6E898 /* CacheAsyncImage.swift */,
+				DB0EDB582A128F9F00E607F2 /* VideoView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -198,6 +201,7 @@
 				DB889E3B2A0F00AD00D6E898 /* DessertDetailView.swift in Sources */,
 				DB889E412A11B3AA00D6E898 /* MealLoader.swift in Sources */,
 				DB889E392A0EFDEE00D6E898 /* MealDetail.swift in Sources */,
+				DB0EDB592A128F9F00E607F2 /* VideoView.swift in Sources */,
 				DB4AE46B2A0DCC840003A514 /* DessertsListView.swift in Sources */,
 				DB889E3D2A113A6F00D6E898 /* CacheAsyncImage.swift in Sources */,
 				DB4AE4572A0DC7B10003A514 /* SugaryBlissApp.swift in Sources */,

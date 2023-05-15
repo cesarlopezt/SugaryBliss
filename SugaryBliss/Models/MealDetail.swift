@@ -61,6 +61,13 @@ extension MealDetail: Codable {
         self.strMealThumb = try container.decode(String.self, forKey: .strMealThumb)
         self.strTags = try container.decodeIfPresent(String.self, forKey: .strTags)
         self.strYoutube = try container.decodeIfPresent(String.self, forKey: .strYoutube)
+        if let strYoutube {
+            let youtubeURLComponents = URLComponents(string: strYoutube)
+            let videoId = youtubeURLComponents?.queryItems?.first(where: {
+                $0.name == "v"
+            })?.value
+            self.strYoutube = videoId
+        }
         self.strSource = try container.decodeIfPresent(String.self, forKey: .strSource)
         self.strImageSource = try container.decodeIfPresent(String.self, forKey: .strImageSource)
         self.strCreativeCommonsConfirmed = try container.decodeIfPresent(String.self, forKey: .strCreativeCommonsConfirmed)
