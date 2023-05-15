@@ -40,35 +40,7 @@ struct DessertsListView: View {
     }
 }
 
-struct DessertCell: View {
-    var dessert: Meal
-    private let imageWidth = 110.0
 
-    var body: some View {
-        HStack {
-            CacheAsyncImage(url: URL(string: dessert.strMealThumb)!) { phase in
-                switch phase {
-                case .success(let image):
-                    image
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: imageWidth)
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                case .failure(let error):
-                    let _ = print(error)
-                    Text("Error")
-                        .frame(width: imageWidth, height: imageWidth)
-                case .empty:
-                    ProgressView()
-                        .frame(width: imageWidth, height: imageWidth)
-                @unknown default:
-                    Image(systemName: "questionmark")
-                }
-            }
-            Text(dessert.strMeal)
-        }
-    }
-}
 
 struct DessertsListView_Previews: PreviewProvider {
     static var previews: some View {

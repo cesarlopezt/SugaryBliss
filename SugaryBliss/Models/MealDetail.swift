@@ -7,12 +7,6 @@
 
 import Foundation
 
-struct Ingredient: Codable, Identifiable {
-    var id = UUID()
-    let name: String
-    let measure: String
-}
-
 struct MealDetail {
     var idMeal: String
     var strMeal: String
@@ -91,4 +85,10 @@ extension MealDetail: Codable {
             self.ingredients.append(.init(name: name, measure: measure))
         }
     }
+}
+
+struct Ingredient: Codable, Identifiable {
+    var id = UUID()
+    let name: String
+    let measure: String
 }

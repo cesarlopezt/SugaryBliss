@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		DB0EDB592A128F9F00E607F2 /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0EDB582A128F9F00E607F2 /* VideoView.swift */; };
+		DB0EDB5B2A12D5AC00E607F2 /* DessertCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0EDB5A2A12D5AC00E607F2 /* DessertCell.swift */; };
 		DB4AE4572A0DC7B10003A514 /* SugaryBlissApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4AE4562A0DC7B10003A514 /* SugaryBlissApp.swift */; };
 		DB4AE45B2A0DC7B20003A514 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB4AE45A2A0DC7B20003A514 /* Assets.xcassets */; };
 		DB4AE45F2A0DC7B20003A514 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB4AE45E2A0DC7B20003A514 /* Preview Assets.xcassets */; };
@@ -23,6 +24,7 @@
 
 /* Begin PBXFileReference section */
 		DB0EDB582A128F9F00E607F2 /* VideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
+		DB0EDB5A2A12D5AC00E607F2 /* DessertCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertCell.swift; sourceTree = "<group>"; };
 		DB4AE4532A0DC7B10003A514 /* SugaryBliss.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SugaryBliss.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB4AE4562A0DC7B10003A514 /* SugaryBlissApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SugaryBlissApp.swift; sourceTree = "<group>"; };
 		DB4AE45A2A0DC7B20003A514 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 			children = (
 				DB4AE46A2A0DCC840003A514 /* DessertsListView.swift */,
 				DB889E3A2A0F00AD00D6E898 /* DessertDetailView.swift */,
+				DB0EDB5A2A12D5AC00E607F2 /* DessertCell.swift */,
 				DB889E3E2A1144E600D6E898 /* IngredientsGrid.swift */,
 				DB889E3C2A113A6F00D6E898 /* CacheAsyncImage.swift */,
 				DB0EDB582A128F9F00E607F2 /* VideoView.swift */,
@@ -196,6 +199,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB889E372A0EFDB700D6E898 /* Responses.swift in Sources */,
+				DB0EDB5B2A12D5AC00E607F2 /* DessertCell.swift in Sources */,
 				DB4AE46D2A0DCD9E0003A514 /* Meal.swift in Sources */,
 				DB889E3F2A1144E600D6E898 /* IngredientsGrid.swift in Sources */,
 				DB889E3B2A0F00AD00D6E898 /* DessertDetailView.swift in Sources */,
