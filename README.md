@@ -10,7 +10,7 @@ containing a video, ingredients, and instructions.
 This ensures efficient communication with the backend server.
 * **Codable**: The project utilizes Codable, Swift's built-in protocol, to efficiently parse JSON data from the 
 API response. The decoding process includes transforming ingredients into a list for easy access and manipulation.
-* **Image Caching**: The Recipe App implements image caching to optimize the performance and user experience. Images fetched 
+* **Image Caching**: SugaryBliss implements image caching to optimize the performance and user experience. Images fetched 
 from the API are stored in a cache, ensuring faster loading times and reducing data usage.
 * **UIViewRepresentable** for WebKit: This allows you to embed and play YouTube videos directly within the app's user interface.
 
