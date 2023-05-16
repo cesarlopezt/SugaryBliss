@@ -71,7 +71,6 @@
 			isa = PBXGroup;
 			children = (
 				DB889E352A0EFCDB00D6E898 /* Networking */,
-				DB4AE4672A0DCB6D0003A514 /* ViewModels */,
 				DB4AE4662A0DCB610003A514 /* Views */,
 				DB4AE4652A0DCB540003A514 /* Models */,
 				DB4AE4562A0DC7B10003A514 /* SugaryBlissApp.swift */,
@@ -110,13 +109,6 @@
 				DB0EDB582A128F9F00E607F2 /* VideoView.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		DB4AE4672A0DCB6D0003A514 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		DB889E352A0EFCDB00D6E898 /* Networking */ = {

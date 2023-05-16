@@ -29,6 +29,7 @@ struct DessertsListView: View {
                 Text("Error")
             case nil:
                 ProgressView()
+                    .navigationTitle("Desserts")
                     .task {
                         await MealLoader.shared.loadDesserts {
                             result = $0
@@ -38,8 +39,6 @@ struct DessertsListView: View {
         }
     }
 }
-
-
 
 struct DessertsListView_Previews: PreviewProvider {
     static var previews: some View {
